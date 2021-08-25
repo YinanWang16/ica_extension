@@ -1,4 +1,4 @@
-# ica_extention
+# ica_extension
 ## workflow_run_time_stats.sh
 This script is to summarize tasks run time in a workflow run.
 * Prerequisites
