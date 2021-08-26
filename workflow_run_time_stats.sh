@@ -44,10 +44,11 @@ fi
 # get task id list
 task_id_list=(`jq -r '.items[].eventDetails.additionalDetails[0]|select(.EventType != null)|select(.EventType|test("LaunchTask")).Output.TaskRunId' $wfr_hist_json`)
 
-echo -e "TASK NAME,STATUS,CREATED,MODIFIED,NODE TIME,ACTUAL ANALYSIS TIME"
+echo -e "TASK ID,TASK NAME,STATUS,CREATED,MODIFIED,NODE TIME,ACTUAL ANALYSIS TIME,RESOURCE SIZE, RESOURCE TIER, RESOURCE TYPE"
 
 for trn in ${task_id_list[@]}; do
   # download task json
+  echo -n "$trn,"
   trn_json=${trn}.get.json
   if [ ! -f $trn_json ]; then
     ica tasks runs get -o json $trn >$trn_json
@@ -62,8 +63,11 @@ for trn in ${task_id_list[@]}; do
   timeStarted=`jq -r '.logs[0].startTime' $trn_json`
   timeStopped=`jq -r '.logs[0].endTime' $trn_json`
   actualTimeUsed=`time_diff $timeStopped $timeStarted`
+
+  # resources
+  resources=(`jq -r '.execution.environment.resources|.size,.tier,.type' $trn_json`)
   printf '%s ' $description
-  printf ',%s,%s,%s,%s,%s\n' $sta $timeCreated $timeModified $timeUsed $actualTimeUsed
+  printf ',%s,%s,%s,%s,%s,%s,%s,%s\n' $sta $timeCreated $timeModified $timeUsed $actualTimeUsed ${resources[@]}
   if $clear_intermediates; then
     rm $trn_json
   fi
@@ -83,4 +87,5 @@ if $clear_intermediates; then
   rm $wfr_json
 fi
 
-echo -e "Total Workflow  Run Time,Succeed,${timeCreated},${timeModified},${timeUsed},${actualTimeUsed}\n"
+echo -e "$wfr_id,Total Workflow  Run Time,Succeed,${timeCreated},${timeModified},${timeUsed},${actualTimeUsed}\n"
+
