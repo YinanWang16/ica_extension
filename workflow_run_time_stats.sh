@@ -43,6 +43,10 @@ fi
 
 # get task id list
 task_id_list=(`jq -r '.items[].eventDetails.additionalDetails[0]|select(.EventType != null)|select(.EventType|test("LaunchTask")).Output.TaskRunId' $wfr_hist_json`)
+# If there is no "LaunchTask" key, just simplely get all "TaskRunId" available
+if [ -z "$task_id_list" ]; then
+  task_id_list=(`jq -r '.items[].eventDetails.additionalDetails[0]|select(.TaskRunId != null).TaskRunId' $wfr_hist_json`)
+fi
 
 echo -e "TASK ID,TASK NAME,STATUS,CREATED,MODIFIED,NODE TIME,ACTUAL ANALYSIS TIME,RESOURCE SIZE, RESOURCE TIER, RESOURCE TYPE"
 
