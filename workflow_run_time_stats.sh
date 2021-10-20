@@ -88,7 +88,7 @@ timeStopped=`jq -r '.timeStopped' $wfr_json`
 actualTimeUsed=`time_diff $timeStopped $timeStarted`
 
 if $clear_intermediates; then
-  rm $wfr_json
+  rm $wfr_hist_json
 fi
 
 echo -e "$wfr_id,Total Workflow  Run Time,Succeed,${timeCreated},${timeModified},${timeUsed},${actualTimeUsed}\n"
