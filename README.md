@@ -10,4 +10,4 @@ tool 2: workflow_run_time_stats.sh
 ## ICAv2
 tool 1: get_analysis_logs.sh (batch download technique logs for an analysis)
 
-tool 2: 
+tool 2: Manual of composing icav2 analysis launching CLI

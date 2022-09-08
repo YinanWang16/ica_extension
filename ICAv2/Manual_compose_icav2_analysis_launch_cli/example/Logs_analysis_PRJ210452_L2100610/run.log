@@ -1,0 +1,10 @@
+2022-06-27 10:39:56+10:00  INFO  - Start processing PRJ210452_L2100610
+2022-06-27 10:39:56+10:00  INFO  - COMMAND: mkdir -p Logs_analysis_PRJ210452_L2100610
+2022-06-27 10:39:56+10:00  INFO  - Get fastq list of PRJ210452_L2100610
+2022-06-27 10:39:56+10:00  INFO  - COMMAND: icav2 projectdata list --data-type FILE   --match-mode FUZZY --file-name PRJ210452_L2100610 -o json >Logs_analysis_PRJ210452_L2100610/fastq_list.json
+2022-06-27 10:39:56+10:00  INFO  - Data IDs of FASTQ files: fil.d80074ea8ca94a13a80408da2ee71506 fil.372fbeb0f62e4bca3ae908da298b9947 fil.80f74149b07f4a87a7f308da2ee71506 fil.c214d5ab64674305a7ee08da2ee71506
+2022-06-27 10:39:56+10:00  INFO  - Data IDs of fastq_list.csv: fil.21c7019bda1440eaa00d08da2ee71506
+2022-06-27 10:39:56+10:00  INFO - Submit an analysis
+2022-06-27 10:39:56+10:00  INFO - COMMAND: icav2 projectpipelines start nextflow 61f71142-10b7-472e-af54-26c589fbfcd6   --user-reference "PRJ210452_L2100610_DRAGEN Germline Whole Genome 3-10-4-v2"   --input "fastqs":"fil.d80074ea8ca94a13a80408da2ee71506","fil.372fbeb0f62e4bca3ae908da298b9947","fil.80f74149b07f4a87a7f308da2ee71506","fil.c214d5ab64674305a7ee08da2ee71506"   --input "ref_tar":"fil.48a0f63157c54624ea2908d9ba754d71"   --input "fastq_list":"fil.21c7019bda1440eaa00d08da2ee71506"   --parameters "enable_dragen_reports":"true"   --parameters "additional_args":"--repeat-genotype-specs /opt/edico/repeat-specs/experimental/smn-catalog.hg38.json"   --parameters "enable_map_align":"true"   --parameters "enable_map_align_output":"true"   --parameters "output_format":"BAM"   --parameters "enable_variant_caller":"true"   --parameters "vc_emit_ref_confidence":"GVCF"   --parameters "enable_cnv":"true"   --parameters "cnv_segmentation_mode":"SLM"   --parameters "enable_sv":"true"   --parameters "repeat_genotype_enable":"true"   --parameters "enable_smn":"true"   --parameters "enable_hla":"true"   --parameters "enable_cyp2d6":"true"   --output-parent-folder fol.27269c2d760e43fe2e6208da298b9947   --storage-size SMALL   -o json
+
+2022-06-27 10:39:56+10:00  INFO - Launching "DRAGEN Germline Whole Genome 3-10-4-v2" for PRJ210452_L2100610: Succeeded
