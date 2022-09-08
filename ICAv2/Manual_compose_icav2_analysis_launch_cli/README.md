@@ -37,7 +37,7 @@ vc_ml_zip
 No of items :  11
 ```
 The first column are the codes to put as the keys of `--input` type parameters. 
-## step 3: Get parameter codes via ICAv2 Swagger page
+## Step 3: Get parameter codes via ICAv2 Swagger page
 To get the codes of parameter type input of a DRAGEN pipeline, you can use this [ICAv2 Swagger endpoint](https://ica.illumina.com/ica/api/swagger/index.html#/Project%20Analysis/getAnalysisConfigurations).
 Firstly, you need to put in the ICAv2 API-key of your account to give it access. ![img.png](img/img.png)
 Then you can query the endpoint by providing the "project id" and "analysis id".
@@ -173,7 +173,7 @@ Both of these methods will return the list of parameters used in the test analys
   ]
 }
 ```
-## Compose the analysis submitting CLI
+## Step 4: Compose the analysis submitting CLI
 With the input codes and parameter codes that you could put as keys in the CLI after `--input` and `--paramter` flags,
 you can compose your own analysis launching CLI. For example:
 ```bash
