@@ -51,10 +51,7 @@ curl -X 'GET' \
   -H 'X-API-Key: xxxxxxxxxxxxxxxxxxx'
 ```
 Both of these methods will return the list of parameters used in the test analysis in JSON format. The values of "name" objects are the codes.
-<details>
-<summary>
-Click to view the parameter list json 
-</summary>
+
 ```json
 {
   "items": [
@@ -177,7 +174,7 @@ Click to view the parameter list json
   ]
 }
 ```
-</details>
+
 ## Step 4: Compose the analysis submitting CLI
 With the input codes and parameter codes that you could put as keys in the CLI after `--input` and `--paramter` flags,
 you can compose your own analysis launching CLI. For example:
