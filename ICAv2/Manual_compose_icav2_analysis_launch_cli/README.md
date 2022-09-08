@@ -200,4 +200,5 @@ icav2 projectpipelines start nextflow 61f71142-10b7-472e-af54-26c589fbfcd6 \
   -o json
 ```
 ## Example: use `for` loop to launch analyses in batch
+
 Please go to the [example](example) folder for examples of the CLI, return message and logs for launching analysis in batch.
