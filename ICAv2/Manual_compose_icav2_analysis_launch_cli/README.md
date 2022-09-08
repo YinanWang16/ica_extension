@@ -39,10 +39,11 @@ No of items :  11
 The first column are the codes to put as the keys of `--input` type parameters. 
 ## Step 3: Get parameter codes via ICAv2 Swagger page
 To get the codes of parameter type input of a DRAGEN pipeline, you can use this [ICAv2 Swagger endpoint](https://ica.illumina.com/ica/api/swagger/index.html#/Project%20Analysis/getAnalysisConfigurations).
+
 Firstly, you need to put in the ICAv2 API-key of your account to give it access. ![img.png](img/img.png)
 Then you can query the endpoint by providing the "project id" and "analysis id".
 ![img_1.png](img/img_1.png)
-You can also use `curl` to query the url in the form of `https://ica.illumina.com/ica/rest/api/projects/{project_id}/analyses/{analysis_id}/configuration`.`
+You can also use `curl` to query the url in the form of `https://ica.illumina.com/ica/rest/api/projects/{project_id}/analyses/{analysis_id}/configuration`.
 ```bash
 curl -X 'GET' \
   'https://ica.illumina.com/ica/rest/api/projects/7abcd9cd-a228-4e58-9ef4-9190259ca7a6/analyses/4b452d2f-c9d3-463d-bf35-9158ffd12184/configurations' \
@@ -50,7 +51,10 @@ curl -X 'GET' \
   -H 'X-API-Key: xxxxxxxxxxxxxxxxxxx'
 ```
 Both of these methods will return the list of parameters used in the test analysis in JSON format. The values of "name" objects are the codes.
-
+<details>
+<summary>
+Click to view the parameter list json 
+</summary>
 ```json
 {
   "items": [
@@ -173,6 +177,7 @@ Both of these methods will return the list of parameters used in the test analys
   ]
 }
 ```
+</details>
 ## Step 4: Compose the analysis submitting CLI
 With the input codes and parameter codes that you could put as keys in the CLI after `--input` and `--paramter` flags,
 you can compose your own analysis launching CLI. For example:
