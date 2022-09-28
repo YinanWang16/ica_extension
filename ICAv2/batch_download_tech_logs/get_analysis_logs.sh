@@ -31,13 +31,13 @@ if [ -f ~/.icav2/.session.ica.yaml ]; then
   project_id=`sed -n 's/^project-id: //p' ~/.icav2/.session.ica.yaml`
   JWT=`sed -n 's/^access-token: //p' ~/.icav2/.session.ica.yaml`
 else
-  echo "Please login ICA with 'icav2 config'"; exit
+  echo "Please login ICA with 'icav2 config'"; exit 2
 fi
 if [ -z $project_id ]; then
-  echo "Please enter a project"; exit
+  echo "Please enter the project with the analysis"; exit 2
 fi
 if [ -z $JWT ]; then
-  echo "Invalid configuration. Please login ICA with 'icav2 config'"; exit
+  echo "Invalid configuration. Please login ICA using 'icav2 config'"; exit 2
 fi
 ## ======================================== ##
 
@@ -50,7 +50,7 @@ curl -s -X 'GET' \
 status=`cat $TEMPJSON|jq '.status'`
 if [ $status == null ]; then
   echo "Couldn't find logs for analysis $analysis_id."
-  exit
+  exit 2
 fi
 ## =============== download file =============== ##
 while read -r file_id file_path; do
