@@ -47,7 +47,7 @@ curl -s -X 'GET' \
   'https://ica.illumina.com/ica/rest/api/projects/'$project_id'/analyses/'$analysis_id'/steps' \
   -H 'accept: application/vnd.illumina.v3+json' \
   -H 'Authorization: Bearer '$JWT'' > $TEPJSON
-status=`cat /tmp/steps_Ub4D.json|jq '.status'`
+status=`cat $TEMPJSON|jq '.status'`
 if [ $status == null ]; then
   echo "Couldn't find logs for analysis $analysis_id."
   exit
